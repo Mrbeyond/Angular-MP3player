@@ -1,0 +1,23 @@
+<div *ngIf="songsservice.selectedplaylist">
+	<table class="table table-borderless table-hover">
+		<thead>
+			<tr class=" text-secondary">
+				<th>Title</th>
+				<th>Artist</th>
+				<th>Year</th>
+				<th>Status</th>
+			</tr>		
+		</thead>
+		<tbody>			
+			<tr *ngFor="let currentsong of songsservice.selectedplaylist.playlistsongs" (click)="getcurrentsong(currentsong)">
+				<td>{{currentsong.name}}</td>
+				<td>{{currentsong.Artist}}</td>
+				<td>{{currentsong.Year}}</td>
+				<td>
+					<span *ngIf="songsservice.play" class=" fas fa-play"></span>
+					<span *ngIf="songsservice.pause" class=" fas fa-pause"></span>
+				</td>
+			</tr>
+		</tbody>	
+	</table>
+</div>

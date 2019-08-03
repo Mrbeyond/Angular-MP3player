@@ -1,0 +1,49 @@
+<div>
+	<div class="row justify-content-center" *ngIf="myservicefordock.selectedsong">
+	 	<div class="col-1">
+	 		{{myservicefordock.display_current_time}}
+	 	</div>	
+		<div class="col-10 justify-content-center" >
+		 	<input type="range" class="text-dark bg-dark mt-3" [(ngModel)]="current_Time" (change)="current_time_control()" title="Seek" style="width: 100%;" [disabled]="myservicefordock.stop">
+		</div>
+		<div class="col-1">
+			{{myservicefordock.display_duration}}
+		</div>
+	</div>		
+	<div class="row ">
+		<div class="col-12 col-md-4 d-flex pt-md-2 justify-content-center" >
+			<div *ngIf="myservicefordock.selectedsong" >			
+			{{myservicefordock.selectedsong.name}} 
+			</div>
+		</div>
+		<div class="col-12 col-md-6 justify-content-center">
+			<span *ngIf="nexter" class=" fas fa-random fa-rotate-270 p-2" (click)="nexter =!nexter; shuffle =!shuffle" title=" Turn shuffle on"></span>
+			<span *ngIf="shuffle" class=" fa fa-random fa-rotate-270 p-2" style="color:#0171DC;" (click)="shuffle =!shuffle; nexter =!nexter" title=" Turn shuffle off"></span>
+			<span *ngIf="!repeat" class=" fas fa-redo fa-rotate-270 p-2" (click)="looper()"
+				title="Turn repeat on"></span>
+			<span *ngIf="repeat" class=" fa fa-redo fa-rotate-270 p-2" style="color:#0171DC;"
+				(click)="looper()" title="Turn repeat off"></span>
+			<span *ngIf="!myservicefordock.stop" class=" fas fa-stop p-2" (click)="stop_playing_song()" title="Stop"></span>
+			<span  *ngIf="myservicefordock.stop" class=" fas fa-stop p-2" style="color:#0171DC;" title="Music is stopped"></span>
+			<span class=" fas fa-fast-backward p-2" (click)="Previous()" title="Previous"></span>
+			<span class=" fas fa-backward p-2" title="Fast backward" (click)="fastbackward()"></span>
+			<span class=" fas fa-play-circle fa-2x p-2" *ngIf= "!myservicefordock.condition" 
+				(click)="myservicefordock.SongPlay()" title="Play">				
+			</span>
+			<span class=" fas fa-pause-circle fa-2x p-2" *ngIf="myservicefordock.condition" 
+				(click)="myservicefordock.SongPause()" title="Pause">
+			</span>
+			<span class=" fas fa-forward p-2" title="Fast forward" (click)="fastforward()"></span>
+			<span class=" fas fa-fast-forward p-2" (click)="Next()" title="Next"></span>
+			<span class=" fas fa-volume-mute p-2" *ngIf="mute" 
+				(click)="volumecontrol()" title="Muted">				
+			</span>
+			<span class=" fas fa-volume-down p-2" *ngIf="volumedown" (click)=" showmute()"></span>
+			<span class=" fas fa-volume-up p-2" *ngIf="volumeup" (click)=" showmute()"></span>
+		</div>
+		<div class="col-md-2 col-12 mt-2">
+			<input type="range" class="text-dark bg-dark mt-3" [(ngModel)]="volume" 
+				(change)="volumecontrol()" title="volume">			
+		</div>		
+	</div>
+</div>

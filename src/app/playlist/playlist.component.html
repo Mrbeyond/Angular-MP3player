@@ -1,0 +1,35 @@
+<div>
+	<span class="fas fa-file-audio fa-2x"></span>
+	<label class=" ml-3 border text-lg-center text-primary pl-3 pr-3"> Playlist  </label>
+</div>
+<div class="justify-content-center">	
+	<ul class="list-unstyled justify-content-center" >
+ 		<li *ngFor='let Displaylist of instanceOfServeme.playlistpack' (click)="onselect
+ 			(Displaylist)" [class.text-primary]="Displaylist == selectedplaylist" class=" d-inline d-md-block">
+	   				<a class="mr-2"><span class="fas fa-music mr-1"></span>{{Displaylist.playlistname}} </a>
+		</li>
+	</ul>
+</div>
+<div class="d-flex justify-content-around d-md-block">
+	<div>
+		<button class="fas fa-plus mb-md-3" (click)='instanceOfServeme.addSongs=true;'> Songs</button>
+	</div>
+	<button class="fas fa-plus mb-md-3" (click)='enablenewplaylist()' *ngIf="create_new"> Playlist</button>
+	 <div *ngIf="Newplaylist_input">
+		<input type="text" class="form-control" [(ngModel)]='newplaylistname'
+		 placeholder="Newplaylist" >
+		<button  class="fas fa-plus btn mb-md-3s" (click)='addnewplaylist()' > Create now</button>
+		<div *ngIf='error_input' class="alert alert-danger"> Please enter a new Playlist name</div>
+	</div>
+	<div *ngIf='Newplaylist_input || instanceOfServeme.addSongs'><button class="fas fa-times" (click)='endadders()'> End</button></div>
+</div>
+
+
+
+<router-outlet></router-outlet>
+
+  <!-- <app-details [List]="selectedlist"></app-details> 
+
+used for one way binding, it shows details of another component here
+  -->
+  

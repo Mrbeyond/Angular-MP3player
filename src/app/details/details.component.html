@@ -1,0 +1,12 @@
+<div *ngIf="myservice.addSongs" class="pb-3">
+	<h4>Add songs here</h4>
+	<ul >
+		<li *ngFor =" let songs of myservice.playlistpack[0].playlistsongs" (click)="pushsongs(songs)">
+			<span>{{songs.name}} &nbsp; {{songs.Artist}} </span>
+		</li>		
+	</ul>	
+</div>
+
+
+
+
